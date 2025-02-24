@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="home-page">
+    <nav class="navbar">
+        <div class="navbar-brand">
+          <span>Fragrance</span>
+        </div>
+        <ul class="navbar-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/fragrances">Fragrances</a></li>
+          <li><a href="/cart">Cart</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </nav>
+
+    <div class="container">
+        <h2>Welcome, <%= user.name %>!</h2>
+        <img src="/<%= user.profilePicture %>" alt="Profile Picture" class="profile-img">
+        <div class="welcome-message">
+            <p>Welcome to our online fragrance store – your ultimate destination for discovering unique and captivating scents. We have curated a diverse collection of high-quality perfumes from renowned brands and emerging niche labels, ensuring that every customer finds a fragrance that reflects their personality and style.</p>
+
+            <p>Our mission is to make your fragrance shopping experience both delightful and effortless. With detailed descriptions, we help you choose the perfect scent for any occasion – whether it's for everyday wear or a special celebration.</p>
+
+            <p>We pride ourselves on offering only authentic products and maintaining a seamless, secure shopping experience. Our user-friendly website ensures that finding, selecting, and purchasing your favorite fragrances is a breeze.</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Fragrance Store</p>
+    </footer>
+</body>
+</html>

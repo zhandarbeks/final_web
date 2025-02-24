@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="profile-page">
+    <nav class="navbar">
+        <div class="navbar-brand">
+          <span>Fragrance</span>
+        </div>
+        <ul class="navbar-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <% if (user.role === 'admin') { %>
+            <li><a href="/admin">Admin dashboard</a></li>
+          <% } %>
+          <li><a href="/fragrances">Fragrances</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </nav>
+    <div class="container">
+        <h2>Profile</h2>
+        <img src="/<%= user.profilePicture %>" alt="Profile Picture" class="profile-img">
+        <p><strong>Name:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+        <form action="/profile/update" method="POST">
+            <input type="text" name="name" value="<%= user.name %>" required>
+            <input type="email" name="email" value="<%= user.email %>" required>
+            <button type="submit" class="btn">Update profile</button>
+        </form>
+        <form action="/profile/delete" method="POST">
+            <button type="submit" class="btn btn-danger">Delete account</button>
+        </form>
+    </div>
+</body>
+</html>

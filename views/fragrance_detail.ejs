@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= fragrance.name %> - Details</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="fragrance-details-page">
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <span>Fragrance</span>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/fragrances">Fragrances</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="fragrance-container">
+            <img src="/uploads/<%= fragrance.image %>" alt="<%= fragrance.name %>" width="250">
+            <div class="fragrance-details">
+                <h2><%= fragrance.name %></h2>
+                <p><strong>Brand:</strong> <%= fragrance.brand %></p>
+                <p><strong>Gender:</strong> <%= fragrance.gender %></p>
+                <p><strong>Top Notes:</strong> <%= fragrance.top_notes.join(', ') %></p>
+                <p><strong>Longevity:</strong> <%= fragrance.longevity %></p>
+                <p><strong>Sillage:</strong> <%= fragrance.sillage %></p>
+                <p><strong>Season:</strong> <%= fragrance.season.join(', ') %></p>
+
+                <form action="/cart/add/<%= fragrance._id %>" method="POST">
+                    <label for="size">Select size:</label>
+                    <select name="size" required>
+                        <% Object.keys(fragrance.sizes).forEach(size => { %>
+                            <option value="<%= size %>"><%= size %> - $<%= fragrance.sizes[size] %></option>
+                        <% }); %>
+                    </select>
+                    <button type="submit">Add to сart</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fragrance Store</p>
+    </footer>
+</body>
+</html>

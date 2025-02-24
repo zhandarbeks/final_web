@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/style.css"> 
+</head>
+<body class="cart-page">
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <span>Fragrance</span>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/fragrances">Fragrances</a></li>
+                <li><a href="/cart">Cart (<%= cart.length %>)</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cart-container">
+        <h1>Your Shopping Cart</h1>
+        <% if (cart.length === 0) { %>
+            <p>Your cart is empty. <a href="/fragrances">Go shopping</a>.</p>
+        <% } else { %>
+            <ul class="cart-list">
+                <% let totalPrice = 0; %>
+                <% cart.forEach(item => { 
+                    totalPrice += item.price * item.quantity;
+                %>
+                    <li class="cart-item">
+                        <img src="/uploads/<%= item.fragranceId.image %>" alt="<%= item.fragranceId.name %>" width="100">
+                        <div class="cart-details">
+                            <h3><%= item.fragranceId.name %></h3>
+                            <p>Size: <%= item.size %> | Price: $<%= item.price %> | Quantity: <%= item.quantity %></p>
+                            <form action="/cart/remove/<%= item._id %>" method="POST">
+                                <button type="submit" class="remove-btn">Remove</button>
+                            </form>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+
+            <h2 class="cart-total">Total: $<%= totalPrice %></h2>
+
+            <form action="/checkout" method="POST">
+                <button type="submit" class="checkout-btn">Proceed to Checkout</button>
+            </form>
+        <% } %>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fragrance Store</p>
+    </footer>
+</body>
+</html>
