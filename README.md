@@ -1,3 +1,5 @@
+# Fragrance store
+
 # Project overview
 
 This project is a web application that allows users to explore, filter, and purchase fragrances. The backend is built using MongoDB (NoSQL) and features a RESTful API to manage user data and cart items. It incorporates advanced database operations including CRUD functionality, nested documents, aggregation pipelines, and complex queries.
